@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbfexusoll12h"]
 
-[ext_resource type="Script" uid="uid://bkw0wcdldvgel" path="res://scenes/slime.gd" id="1_n6pvg"]
+[ext_resource type="Script" uid="uid://bkw0wcdldvgel" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://cqnbo6otkvkpd" path="res://assets/sprites/slime_green.png" id="1_p2gj0"]
 [ext_resource type="PackedScene" uid="uid://d2c223w3vp7l6" path="res://scenes/killzone.tscn" id="2_n6pvg"]
 
@@ -57,3 +57,11 @@ frame_progress = 0.0398785
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillzoneArea2D"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_0l8pv")
+
+[node name="RightRayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -7)
+target_position = Vector2(13, 0)
+
+[node name="LeftRayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(0, -7)
+target_position = Vector2(-13, 0)

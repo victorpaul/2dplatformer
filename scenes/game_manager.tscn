@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://p7uognw23vg4"]
+
+[sub_resource type="GDScript" id="GDScript_du7xs"]
+script/source = "extends Node
+
+var points = 0;
+
+func add_point() -> void:
+	points+=1
+"
+
+[node name="GameManager" type="Node"]
+script = SubResource("GDScript_du7xs")

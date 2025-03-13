@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsa76edkyqsfo"]
+[gd_scene load_steps=15 format=3 uid="uid://dsa76edkyqsfo"]
 
+[ext_resource type="Script" uid="uid://y6g38nr4xk1c" path="res://scripts/game_manager.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cdvqsv6vqh8cf" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="FontFile" uid="uid://dyx6gf5o5hguw" path="res://assets/fonts/PixelOperator8.ttf" id="2_gee14"]
 [ext_resource type="Texture2D" uid="uid://pf5kqxhyoh40" path="res://assets/sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b7glncyknucsy" path="res://scenes/platform.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d373kx0yqgnmp" path="res://scenes/coid.tscn" id="4_lbhrr"]
@@ -214,6 +216,19 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_u5sy4")
+
+[node name="Label" type="Label" parent="GameManager"]
+offset_left = -195.0
+offset_top = -35.0
+offset_right = -129.0
+theme_override_fonts/font = ExtResource("2_gee14")
+theme_override_font_sizes/font_size = 8
+text = "Coins
+"
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(7, 0)
 tile_set = SubResource("TileSet_lbhrr")
@@ -269,3 +284,6 @@ autoplay = "move"
 
 [node name="SlimeNode2D" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(302, 112)
+
+[node name="CoinArea2D" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(64, 36)
