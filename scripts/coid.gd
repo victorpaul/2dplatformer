@@ -15,6 +15,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	game_manager.add_point()
-	animation_player.play("pickup")
-	#queue_free()
-	
+	MusicAudioStreamPlayer2d.play_coin()
+	queue_free()
