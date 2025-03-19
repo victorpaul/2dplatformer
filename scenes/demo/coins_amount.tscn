@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3o2g370853o"]
+
+[ext_resource type="TileSet" uid="uid://diankkx7d5efb" path="res://scenes/tileset.tres" id="1_r7il4"]
+[ext_resource type="PackedScene" uid="uid://cdvqsv6vqh8cf" path="res://scenes/player.tscn" id="2_p6eqi"]
+
+[node name="CoinsAmount" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_p6eqi")]
+position = Vector2(-48, 7)
+
+[node name="TileMap" type="TileMap" parent="."]
+unique_name_in_owner = true
+tile_set = ExtResource("1_r7il4")
+format = 2
+layer_0/tile_data = PackedInt32Array(262137, 65536, 0, 262138, 65536, 0, 262139, 65536, 0, 262140, 65536, 0, 262141, 65536, 0, 262142, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 196610, 65536, 0, 196611, 65536, 0, 196612, 65536, 0, 196613, 65536, 0)
