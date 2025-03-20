@@ -1,0 +1,71 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgcb2jj10nsod"]
+
+[ext_resource type="Script" uid="uid://erknxqw1ad25" path="res://scripts/door.gd" id="1_yjlb6"]
+[ext_resource type="Texture2D" uid="uid://cb4270rh268j8" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Closing/01.png" id="2_rlkjt"]
+[ext_resource type="Texture2D" uid="uid://bem5jx5t1tadu" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Closing/02.png" id="3_5qlrj"]
+[ext_resource type="Texture2D" uid="uid://digegbgqtpokm" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Closing/03.png" id="4_6yvj5"]
+[ext_resource type="Texture2D" uid="uid://ddvugm8e7oxw7" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Closing/04.png" id="5_qqvfx"]
+[ext_resource type="Texture2D" uid="uid://bg8b5amluodpl" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Closing/05.png" id="6_bxnwl"]
+[ext_resource type="Texture2D" uid="uid://6n6f00khr5dq" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/01.png" id="7_rlpqc"]
+[ext_resource type="Texture2D" uid="uid://dh25cxham8vah" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/02.png" id="8_5p3qm"]
+[ext_resource type="Texture2D" uid="uid://d2cj5sotdavsp" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/03.png" id="9_yjfhd"]
+[ext_resource type="Texture2D" uid="uid://buo4g8t7mcxpm" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/04.png" id="10_0kcfm"]
+[ext_resource type="Texture2D" uid="uid://bfvcw1qg7sai1" path="res://assets/Treasure Hunters/Pirate Ship/Sprites/Decorations/Door/Opening/05.png" id="11_qqxfx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykpwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rlkjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5qlrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6yvj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qqvfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bxnwl")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_rlpqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5p3qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yjfhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0kcfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qqxfx")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufqmg"]
+size = Vector2(20, 32)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_yjlb6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_ykpwg")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -16)
+shape = SubResource("RectangleShape2D_ufqmg")

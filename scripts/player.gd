@@ -1,18 +1,18 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var tile_map: TileMap = %TileMap
+@onready var mid: TileMapLayer = %TileMapLayer
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -300.0
+@export var SPEED = 100.0
+@export var JUMP_VELOCITY = -200.0
 
 var is_on_ladder = false
 var jump_on_ladder = false
 var prev_state_is_on_floor = false
 
 func _process(delta: float) -> void:
-	var map_position = tile_map.local_to_map(tile_map.to_local(global_position))
-	var cell_data = tile_map.get_cell_tile_data(0, map_position)
+	var map_position = mid.local_to_map(mid.to_local(global_position))
+	var cell_data = mid.get_cell_tile_data(map_position)
 	is_on_ladder = cell_data && cell_data.get_custom_data("ladder")
 	
 	var jump_pressed = Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("move_up")
