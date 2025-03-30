@@ -58,7 +58,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufqmg"]
 size = Vector2(20, 32)
 
-[node name="Door" type="Node2D"]
+[node name="Door" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_yjlb6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -69,3 +70,5 @@ animation = &"open"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, -16)
 shape = SubResource("RectangleShape2D_ufqmg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,6 +5,11 @@ extends Node2D
 # Public variable to track door state
 @export var is_open: bool = false
 
+# Door configuration
+@export_category("Door Configuration")
+@export_file("*.tscn") var target_level: String = ""
+@export var transition_delay: float = 0.5
+
 func _ready():
 	# Initialize the door to closed state
 	if is_open:
@@ -19,6 +24,7 @@ func _ready():
 # Public method to open the door
 func open():
 	if not is_open:
+		MusicAudioStreamPlayer2d.play_power_up()
 		animated_sprite_2d.play("open")
 		is_open = true
 		# Connect to animation_finished signal if not already connected
@@ -48,3 +54,13 @@ func _on_animation_finished():
 		# Show first frame of open animation when door is closed
 		animated_sprite_2d.animation = "open"
 		animated_sprite_2d.frame = 0
+
+func _on_body_entered(body: Node2D) -> void:
+	if is_open:
+		#print("Someone entered open door")
+		#MusicAudioStreamPlayer2d.play_coin()
+		
+		if target_level != "":
+			var err = get_tree().change_scene_to_file(target_level)
+			if err != OK:
+				print("Error changing scene: " + str(err))
