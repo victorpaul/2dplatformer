@@ -40,6 +40,14 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_ml5hy")
+}],
+"loop": true,
+"name": &"holding",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ml5hy")
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_xccsb")
@@ -89,12 +97,12 @@ animations = [{
 [node name="Sword" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_jvvga")
+metadata/weapon = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ejoqe")
-animation = &"idle"
+animation = &"holding"
 autoplay = "idle"
-frame_progress = 0.514817
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nyjpp")

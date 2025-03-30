@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://b6fktlkccvov"]
+[gd_scene load_steps=31 format=3 uid="uid://b6fktlkccvov"]
 
 [ext_resource type="Texture2D" uid="uid://wiahs4ddau0g" path="res://assets/Treasure Hunters/The Crusty Crew/Sprites/Crabby/01-Idle/Idle 01.png" id="1_65u1r"]
 [ext_resource type="Texture2D" uid="uid://ckfp43206el8s" path="res://assets/Treasure Hunters/The Crusty Crew/Sprites/Crabby/07-Attack/Attack 01.png" id="1_f020n"]
+[ext_resource type="Script" uid="uid://m2f7famnf278" path="res://scripts/crabby.gd" id="1_qqthm"]
 [ext_resource type="Texture2D" uid="uid://c23w6rdlmklsc" path="res://assets/Treasure Hunters/The Crusty Crew/Sprites/Crabby/01-Idle/Idle 02.png" id="2_2sbtr"]
 [ext_resource type="Texture2D" uid="uid://oxpopgjlyox7" path="res://assets/Treasure Hunters/The Crusty Crew/Sprites/Crabby/07-Attack/Attack 02.png" id="2_qqthm"]
 [ext_resource type="Texture2D" uid="uid://bqu8u5o6wpcbi" path="res://assets/Treasure Hunters/The Crusty Crew/Sprites/Crabby/07-Attack/Attack 03.png" id="3_wux0u"]
@@ -137,7 +138,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f020n"]
+size = Vector2(56, 22)
+
+[node name="Node2D" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_qqthm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -145,3 +151,10 @@ sprite_frames = SubResource("SpriteFrames_netyr")
 animation = &"attack"
 autoplay = "idle"
 frame_progress = 0.161281
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -11)
+shape = SubResource("RectangleShape2D_f020n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
