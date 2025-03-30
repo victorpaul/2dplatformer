@@ -58,6 +58,14 @@ func play_task_collect_coins(amount_of_coins: int) -> void:
 		_get_her_amount(amount_of_coins),
 		_get_her_coins(amount_of_coins),
 	])
+	
+func play_task_collect_coins_in_order(amount_of_coins: int) -> void:
+	voice.play_voice_sequence([
+		"res://assets/voice/ua_have_to_collect.mp3",
+		_get_her_amount(amount_of_coins),
+		_get_her_coins(amount_of_coins),
+		"res://assets/voice/ua_in_order.mp3",
+	])
 
 func play_task_collect_coins_complete(amount_of_coins: int) -> void:
 		voice.play_voice_sequence([

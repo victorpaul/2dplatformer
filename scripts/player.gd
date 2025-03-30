@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hold_hands: Node2D = $HoldHands
 
 @onready var mid: TileMapLayer = %TileMapLayer
 
@@ -9,6 +10,10 @@ extends CharacterBody2D
 var is_on_ladder = false
 var jump_on_ladder = false
 var prev_state_is_on_floor = false
+var initial_hands_position_x = 0
+
+func _on_ready() -> void:
+	initial_hands_position_x = hold_hands.position.x
 
 func _process(delta: float) -> void:
 	var map_position = mid.local_to_map(mid.to_local(global_position))
@@ -52,6 +57,8 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 		animated_sprite_2d.flip_h = direction < 0
+		
+		hold_hands.position.x = -initial_hands_position_x if direction<0 else initial_hands_position_x
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -62,3 +69,11 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("idle" if direction == 0 else "run")
 		
 	move_and_slide()
+
+func hold_in_arms(node: Node2D) -> void:
+	var original_parent = node.get_parent()
+	if original_parent:
+		original_parent.remove_child(node)
+	
+	hold_hands.add_child(node)
+	node.position = Vector2(0, 0)

@@ -212,3 +212,9 @@ shape = SubResource("CircleShape2D_fjrip")
 zoom = Vector2(4, 4)
 limit_bottom = 160
 position_smoothing_enabled = true
+
+[node name="HoldHands" type="Node2D" parent="."]
+position = Vector2(10, -9)
+rotation = -1.57079
+
+[connection signal="ready" from="." to="." method="_on_ready"]
