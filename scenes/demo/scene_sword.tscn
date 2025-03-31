@@ -30,6 +30,7 @@ tile_set = ExtResource("2_t725i")
 
 [node name="FinalDoor" parent="." instance=ExtResource("4_3yqwa")]
 position = Vector2(138, 48)
+target_level = "uid://bp3o2g370853o"
 
 [node name="Door2" parent="." instance=ExtResource("4_3yqwa")]
 position = Vector2(-138, 48)

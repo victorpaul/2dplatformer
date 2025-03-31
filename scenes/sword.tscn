@@ -87,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_ml5hy")
 }],
-"loop": true,
+"loop": false,
 "name": &"spinning",
 "speed": 10.0
 }]
@@ -101,7 +101,7 @@ metadata/weapon = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ejoqe")
-animation = &"holding"
+animation = &"spinning"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

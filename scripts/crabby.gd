@@ -4,21 +4,11 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 
-	if _has_sword_child(body):
+	if Utils.has_sword_child(body):
+		Utils.play_sword_hit(body)
 		MusicAudioStreamPlayer2d.play_hurt()
 		collision_shape_2d.queue_free()
 		animated_sprite_2d.play("dead")
 	else:
 		animated_sprite_2d.play("attack")
-	
-func _has_sword_child(node: Node2D) -> bool:
-	if node.get_meta("weapon",false):
-		return true
-	else:
-		print(node.name)
-	
-	for child in node.get_children():
-		if _has_sword_child(child):
-			return true
-			
-	return false
+		Utils.kill_player(body)

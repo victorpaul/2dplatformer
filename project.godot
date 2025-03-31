@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 MusicAudioStreamPlayer2d="*res://scenes/music_audio_stream_player_2d.tscn"
+Utils="*res://scenes/utils.tscn"
 
 [input]
 
