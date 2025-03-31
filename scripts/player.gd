@@ -11,6 +11,7 @@ var is_on_ladder = false
 var jump_on_ladder = false
 var prev_state_is_on_floor = false
 var initial_hands_position_x = 0
+var tail = []
 
 func _on_ready() -> void:
 	initial_hands_position_x = hold_hands.position.x
@@ -77,3 +78,20 @@ func hold_in_arms(node: Node2D) -> void:
 	
 	hold_hands.add_child(node)
 	node.position = Vector2(0, 0)
+	
+func get_tail(node: Node2D) -> Node2D:
+	# Initialize tail array if it doesn't exist
+	if not has_meta("tail_array"):
+		set_meta("tail_array", [])
+	
+	var tail_array = get_meta("tail_array")
+	
+	# Add the new node to the tail array
+	tail_array.append(node)
+	
+	# If this is the first node in the tail, return self
+	if tail_array.size() == 1:
+		return self
+	# Otherwise return the previous last element (which is now second-to-last)
+	else:
+		return tail_array[tail_array.size() - 2]

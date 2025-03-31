@@ -68,9 +68,23 @@ func play_task_collect_coins_in_order(amount_of_coins: int) -> void:
 	])
 
 func play_task_collect_coins_complete(amount_of_coins: int) -> void:
-		voice.play_voice_sequence([
+	voice.play_voice_sequence([
 		_get_great(),
 		"res://assets/voice/ua_was_collected.mp3",
 		_get_her_amount(amount_of_coins),
 		_get_her_coins(amount_of_coins),
+	])
+	
+func play_task_defeat_enemies(amount_of_enemies: int) -> void:
+	voice.play_voice_sequence([
+		"res://assets/voice/ua_have_to_defeat.mp3",
+		_get_her_amount(amount_of_enemies),
+		"res://assets/voice/ua_enemies.mp3",
+	])
+func play_defeated_enemies(amount_of_enemies: int) -> void:
+	voice.play_voice_sequence([
+		_get_great(),
+		"res://assets/voice/ua_was_defeated.mp3",
+		_get_her_amount(amount_of_enemies),
+		"res://assets/voice/ua_enemies.mp3",
 	])

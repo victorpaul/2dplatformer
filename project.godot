@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2dplatformer"
-run/main_scene="uid://d3j6ehyj2qwil"
+run/main_scene="uid://bomx53yfp4sjt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

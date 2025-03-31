@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://gjd4jk8in3c2"]
+
+[ext_resource type="Texture2D" uid="uid://r6wpfjcrl6lo" path="res://assets/animals/birds1_shadowless.png" id="1_ql0qm"]
+[ext_resource type="Script" uid="uid://ntt5p0nlv233" path="res://scripts/duck.gd" id="1_tils5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ircvx"]
+atlas = ExtResource("1_ql0qm")
+region = Rect2(294, 0, 42, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tils5"]
+atlas = ExtResource("1_ql0qm")
+region = Rect2(252, 0, 42, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kls7j"]
+atlas = ExtResource("1_ql0qm")
+region = Rect2(336, 0, 42, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kls7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ircvx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tils5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ircvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kls7j")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql0qm"]
+radius = 6.0
+
+[node name="Duck" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_tils5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_kls7j")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.844536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_ql0qm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

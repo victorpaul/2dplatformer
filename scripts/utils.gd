@@ -18,9 +18,12 @@ func play_sword_hit(node: Node2D) -> void:
 	for child in node.get_children():
 		play_sword_hit(child)
 
+func is_player(node: Node2D) -> bool :
+	return node.name == "Player"
+
 func kill_player(node: Node2D):
 	print("kill player")
-	if node.name == "Player":
+	if is_player(node) :
 		MusicAudioStreamPlayer2d.play_hurt()
 		Engine.time_scale = 0.5
 		node.get_node("CollisionShape2D").queue_free()
